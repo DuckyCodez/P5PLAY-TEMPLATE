@@ -87,6 +87,10 @@ function draw() {
     displayUI();
     textAlign(CENTER, CENTER);
 
+
+        if (kb.pressed('h')) {
+                money += 10000:
+        }
     //  -  Upgrades for Circles  -  \\
     if (upgrade <= Object.keys(circle_upgrade).length-1) {
         textSize(50);
