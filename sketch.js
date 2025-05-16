@@ -79,6 +79,7 @@ function draw() {
     player.layer = 1000;
     player.x = mouseX;
     player.y = mouseY;
+    let multiplier = 2.25;
     
     
     circleSpawning();
