@@ -95,6 +95,7 @@ function draw() {
         if (kb.pressed('u') && round(money) >= circle_upgrade[upgrade][0]) {
             money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
             multiplier += circle_upgrade[upgrade][1]; // Gets the 
+            circlesGroup.color = circle_upgrade[upgrade][2];
             upgrade += 1;
         }
     }
