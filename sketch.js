@@ -62,7 +62,7 @@ function setup() {
     // Groups
     circlesGroup = new Group();
     circlesGroup.diameter = 100;
-    circlesGroup.color = 'red';
+    circlesGroup.color = '#FF9696';
     circlesGroup.collider = 'static';
     
     // Player
