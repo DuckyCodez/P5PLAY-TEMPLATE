@@ -53,7 +53,7 @@ let money = 0;
 let upgrade = 1;
 let moneyNeeded = 400;
 let max_money = 100000;
-let multiplier = 0;
+let multiplier = 1;
 
 function setup() {
 
