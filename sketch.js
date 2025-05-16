@@ -81,7 +81,7 @@ function draw() {
     
     
     displayUI();
-
+    textAlign(CENTER, CENTER);
 
     //  -  Upgrades for Circles  -  \\
     if (upgrade <= Object.keys(circle_upgrade).length-1) {
@@ -97,9 +97,11 @@ function draw() {
 
 function circleSpawning() {
     if (circlesGroup.length <= 65) {
+        strokeWeight(1);
         let circle = new circlesGroup.Sprite();
         circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
         circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
+        upgrade += 1;
     }
 }
 
