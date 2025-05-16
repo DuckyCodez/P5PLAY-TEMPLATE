@@ -8,9 +8,7 @@ world.gravity.y = 10;
 function saveGame() {
 let data = {
         money: money,
-        moneyGain: moneyGain,
-        upgrade: upgrade,
-        moneyNeeded: moneyNeeded
+        moneyGain: moneyGain
     };
     localStorage.setItem('circleClickerSave', JSON.stringify(data));
     console.log('Game Saved');
@@ -22,8 +20,6 @@ function loadGame() {
         let data = JSON.parse(saved);
         money = data.money ?? money;
         moneyGain = data.moneyGain ?? moneyGain;
-        upgrade = data.upgrade ?? upgrade;
-        moneyNeeded = data.moneyNeeded ?? moneyNeeded;
         console.log('Game Loaded');
     }
 }
@@ -96,7 +92,6 @@ function draw() {
             money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
             multiplier += circle_upgrade[upgrade][1]; // Gets the 
             circles_group.color = circle_upgrade[upgrade][2];
-            upgrade += 1; 
         }
     }
 }
