@@ -37,6 +37,7 @@ function draw() {
     clear();
     background('gray');
     player.layer = 1000;
+    player.x = 200;
     
     if (mode === 'circle_spawning') {
         circleSpawning();
