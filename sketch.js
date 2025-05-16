@@ -16,7 +16,9 @@ function setup() {
     circlesGroup = new Group();
     circlesGroup.diameter = 100;
     circlesGroup.color = 'red';
+    circles_group.stroke = 'black';
     circlesGroup.collider = 'static';
+    
     
     // Spawner
     spawner = new Sprite();
