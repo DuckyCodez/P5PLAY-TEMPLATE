@@ -12,32 +12,33 @@ let moneyNeeded = 400;
 let max_money = 100000;
 
 function setup() {
-// Groups
-circlesGroup = new Group();
-circlesGroup.diameter = 100;
-circlesGroup.color = 'red';
-circlesGroup.collider = 'static';
-
-// Spawner
-spawner = new Sprite();
-spawner.height = height / 1.75;
-spawner.width = width / 1.75;
-spawner.y = height / 2;
-spawner.color = 'white';
-spawner.collider = 'static';
-
-// Player
-player = new Sprite();
-player.diameter = 20;
-player.color = 'red';
-player.overlaps(circlesGroup, collect);
+    // Groups
+    circlesGroup = new Group();
+    circlesGroup.diameter = 100;
+    circlesGroup.color = 'red';
+    circlesGroup.collider = 'static';
+    
+    // Spawner
+    spawner = new Sprite();
+    spawner.height = height / 1.75;
+    spawner.width = width / 1.75;
+    spawner.y = height / 2;
+    spawner.color = 'white';
+    spawner.collider = 'static';
+    
+    // Player
+    player = new Sprite();
+    player.diameter = 20;
+    player.color = 'red';
+    player.overlaps(circlesGroup, collect);
 }
 
 function draw() {
     clear();
     background('gray');
     player.layer = 1000;
-    player.x = 200;
+    player.x = width/2;
+    player.y = height/2;
     
     if (mode === 'circle_spawning') {
         circleSpawning();
