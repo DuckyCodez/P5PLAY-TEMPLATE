@@ -37,8 +37,8 @@ function draw() {
     clear();
     background('gray');
     player.layer = 1000;
-    player.x = width/2;
-    player.y = height/2;
+    player.x = mouseX;
+    player.y = mouseY;
     
     if (mode === 'circle_spawning') {
         circleSpawning();
