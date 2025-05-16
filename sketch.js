@@ -88,10 +88,9 @@ function draw() {
         textSize(50);
         text("Money Needed (For Upgrades): " + circle_upgrade[upgrade][0], (width / 2), 450);
         
-        if (kb.pressing('u') && round(money) >= circle_upgrade[upgrade][0]) {
+        if (keyDown('u') && round(money) >= circle_upgrade[upgrade][0]) {
             money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
             multiplier += circle_upgrade[upgrade][1]; // Gets the 
-            circles_group.color = circle_upgrade[upgrade][2];
         }
     }
 }
