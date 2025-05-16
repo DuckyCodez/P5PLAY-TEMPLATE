@@ -8,7 +8,8 @@ world.gravity.y = 10;
 function saveGame() {
 let data = {
         money: money,
-        moneyGain: moneyGain
+        moneyGain: moneyGain,
+        upgrade: upgrade
     };
     localStorage.setItem('circleClickerSave', JSON.stringify(data));
     console.log('Game Saved');
@@ -20,6 +21,7 @@ function loadGame() {
         let data = JSON.parse(saved);
         money = data.money ?? money;
         moneyGain = data.moneyGain ?? moneyGain;
+        upgrade = data.upgrade ?? upgrade;
         console.log('Game Loaded');
     }
 }
