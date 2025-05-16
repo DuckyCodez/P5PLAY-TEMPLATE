@@ -47,7 +47,6 @@ let circle_upgrade = {
 }
 
 let spawner, circlesGroup, player;
-let mode = 'circle_spawning';
 
 let moneyGain = 1;
 let money = 0;
@@ -88,9 +87,9 @@ function draw() {
     player.x = mouseX;
     player.y = mouseY;
     
-    if (mode === 'circle_spawning') {
-        circleSpawning();
-    }
+    
+    circleSpawning();
+    
     
     displayUI();
 
@@ -98,7 +97,7 @@ function draw() {
     //  -  Upgrades for Circles  -  \\
     if (upgrade <= Object.keys(circle_upgrade).length-1) {
         textSize(50);
-        text("Money Needed (For Upgrades): " + money_converter(circle_upgrade[upgrade][0]), (width / 2), 450);
+        text("Money Needed (For Upgrades): " + circle_upgrade[upgrade][0], (width / 2), 450);
         
         if (kb.pressing('u') && round(money) >= circle_upgrade[upgrade][0]) {
             money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
