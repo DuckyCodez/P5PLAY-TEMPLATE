@@ -30,21 +30,6 @@ function loadGame() {
 
 
 
-let circle_upgrade = {
-    // Red Upgrades \\
-    1:[800 , 0.5 , '#ff4343'], 2:[1400 , 0.25 , '#ff7373'], 3:[2000 , 0.25 , '#ff9b9b'],
-    
-    // Orange Upgrades \\
-    4:[2400 , 0.25 , '#ff8e00'], 5 : [3200 , 0.25 , '#ffac44'], 6:[5400 , 0.5 , '#ffc47a'], 7:[10000 , 1 , '#ffd39c'],
-    
-    // Yellow Upgrades \\
-    8:[15000, 1, '#fff004'], 9:[25000, 1, '#fff448'], 10:[32000, 1, '#fff774'], 11: [40000, 1.5, '#fffaa5'],
-    
-    // Light Blue Upgrades \\
-    12 : [50000, 1.5, '#00c9ff'], 13 : [70000, 1.5, '#40d7ff'], 14 : [85000, 1.5, '#72e2ff'], 15 : [100000, 2, '#b7f0ff']
-    
-    // Blue Upgrades \\
-}
 
 let spawner, circlesGroup, player;
 let mode = 'circle_spawning';
@@ -96,18 +81,6 @@ function draw() {
     displayUI();
 
 
-    //  -  Upgrades for Circles  -  \\
-    if (upgrade <= Object.keys(circle_upgrade).length-1) {
-        textSize(50);
-        text("Money Needed (For Upgrades): " + money_converter(circle_upgrade[upgrade][0]), (width / 2), 450);
-        
-        if (kb.pressing('u') && round(money) >= circle_upgrade[upgrade][0]) {
-            money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
-            multiplier += circle_upgrade[upgrade][1]; // Gets the 
-            circles_group.color = circle_upgrade[upgrade][2];
-            upgrade += 1; 
-        }
-    }
 }
 
 function circleSpawning() {
