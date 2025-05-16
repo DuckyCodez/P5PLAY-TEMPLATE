@@ -70,6 +70,9 @@ function setup() {
     player.diameter = 20;
     player.color = 'red';
     player.overlaps(circlesGroup, collect);
+
+    stroke('black');
+    strokeWeight(4);
 }
 
 function draw() {
