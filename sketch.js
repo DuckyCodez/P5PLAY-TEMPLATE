@@ -71,8 +71,10 @@ function setup() {
     player.color = 'red';
     player.overlaps(circlesGroup, collect);
 
-    stroke('black');
-    strokeWeight(4);
+    try {
+        stroke('black');
+        strokeWeight(4);
+    }
 }
 
 function draw() {
