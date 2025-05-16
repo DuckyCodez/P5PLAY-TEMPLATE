@@ -5,26 +5,7 @@ world.gravity.y = 10;
 
 
 
-function saveGame() {
-let data = {
-        money: money,
-        moneyGain: moneyGain,
-        moneyNeeded: moneyNeeded
-    };
-    localStorage.setItem('circleClickerSave', JSON.stringify(data));
-    console.log('Game Saved');
-}
 
-function loadGame() {
-    let saved = localStorage.getItem('circleClickerSave');
-    if (saved) {
-        let data = JSON.parse(saved);
-        money = data.money ?? money;
-        moneyGain = data.moneyGain ?? moneyGain;
-        moneyNeeded = data.moneyNeeded ?? moneyNeeded;
-        console.log('Game Loaded');
-    }
-}
 
 
 
@@ -41,7 +22,7 @@ let max_money = 100000;
 function setup() {
 
     // Try loading game on start
-    loadGame();
+    
     // Groups
     circlesGroup = new Group();
     circlesGroup.diameter = 100;
@@ -67,7 +48,7 @@ function setup() {
 function draw() {
     clear();
     background('gray');
-    setInterval(saveGame, 5000);
+    
     player.layer = 1000;
     player.x = mouseX;
     player.y = mouseY;
