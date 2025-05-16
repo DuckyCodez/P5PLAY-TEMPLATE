@@ -64,14 +64,6 @@ function setup() {
     circlesGroup.color = 'red';
     circlesGroup.collider = 'static';
     
-    // Spawner
-    spawner = new Sprite();
-    spawner.height = height / 1.75;
-    spawner.width = width / 1.75;
-    spawner.y = height / 2;
-    spawner.color = 'white';
-    spawner.collider = 'static';
-    
     // Player
     player = new Sprite();
     player.diameter = 20;
@@ -117,10 +109,9 @@ function circleSpawning() {
 }
 
 function collect(player, circle) {
-    if (mode === 'circle_spawning') {
         circle.remove();
         money += moneyGain;
-    }
+    
 }
 
 function displayUI() {
