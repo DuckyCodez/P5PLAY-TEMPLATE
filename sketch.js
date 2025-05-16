@@ -91,6 +91,7 @@ function draw() {
         if (kb.pressed('u') && round(money) >= circle_upgrade[upgrade][0]) {
             money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
             multiplier += circle_upgrade[upgrade][1]; // Gets the 
+            upgrade += 1;
         }
     }
 }
@@ -101,7 +102,7 @@ function circleSpawning() {
         let circle = new circlesGroup.Sprite();
         circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
         circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
-        upgrade += 1;
+        
     }
 }
 
