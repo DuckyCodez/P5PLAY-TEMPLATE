@@ -120,4 +120,5 @@ function displayUI() {
     textSize(30);
     textAlign(LEFT);
     text("Money: " + round(money), 20, 50);
+    text("Multiplier: " + multiplier, 20, 100);
 }
