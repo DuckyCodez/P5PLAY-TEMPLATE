@@ -53,6 +53,7 @@ let money = 0;
 let upgrade = 1;
 let moneyNeeded = 400;
 let max_money = 100000;
+let multiplier = 0;
 
 function setup() {
 
@@ -110,7 +111,7 @@ function circleSpawning() {
 
 function collect(player, circle) {
         circle.remove();
-        money += moneyGain;
+        money += moneyGain * multiplier;
     
 }
 
