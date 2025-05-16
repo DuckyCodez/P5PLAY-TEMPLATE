@@ -9,7 +9,8 @@ function saveGame() {
 let data = {
         money: money,
         moneyGain: moneyGain,
-        upgrade: upgrade
+        upgrade: upgrade,
+        multiplier: multiplier
     };
     localStorage.setItem('circleClickerSave', JSON.stringify(data));
     console.log('Game Saved');
@@ -22,6 +23,7 @@ function loadGame() {
         money = data.money ?? money;
         moneyGain = data.moneyGain ?? moneyGain;
         upgrade = data.upgrade ?? upgrade;
+        multiplier = data.multiplier ?? multiplier;
         console.log('Game Loaded');
     }
 }
