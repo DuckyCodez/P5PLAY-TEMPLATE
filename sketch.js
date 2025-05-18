@@ -384,41 +384,6 @@ function prestiges() {
                 textSize(25); // Description Size
                 text(description, (width / 2), 425 + 20); // Description Location
                 
-                
-                // - Mouse Pressed - \\
-                if (mouseIsPressed) {
-                    
-                    //
-                    if (prestige_upgrades[prestige_upgrade.upgradeType][2] != 0 && prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5] <= prestige['prestige_points'] && prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
-                        
-                        //  Prestige Loss \\
-                        prestige['prestige_points'] -= prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5]
-                        
-                        //   Money Gained   \\
-                        if ([00,01,02,03,04,05].includes(prestige_upgrade.upgradeType)) {
-                            money_gain += prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        } else if ([10].includes(prestige_upgrade.upgradeType)) {
-                            prestige['prestige_rate'] += prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        } else if ([20,21,22].includes(prestige_upgrade.upgradeType)) {
-                            auto_time += prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        }
-                        
-                        //  Changes What Upgrade its On
-                        prestige_upgrades[prestige_upgrade.upgradeType][2] += 1;
-                        
-                    } else if (prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][5] <= prestige['prestige_points'] && prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
-                        prestige['prestige_points'] -= prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][5]
-                                                //   Money Gained   \\
-                        if ([00,01,02,03,04,05].includes(prestige_upgrade.upgradeType)) {
-                            money_gain += prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        } else if ([10].includes(prestige_upgrade.upgradeType)) {
-                            prestige['prestige_rate'] += prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        } else if ([20,21,22].includes(prestige_upgrade.upgradeType)) {
-                            auto_time -= prestige_upgrades[prestige_upgrade.upgradeType][6];
-                        }
-                        prestige_upgrades[prestige_upgrade.upgradeType][2] += 1;
-                    }
-                }
             }
         }
     }
