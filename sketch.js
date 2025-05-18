@@ -233,19 +233,7 @@ function circle_spawning() {
     //  -  Setup  -  \\
     background('white');
     fill('white');
-    
-    if (kb.pressed('y')) {
-        if (!auto) {
-            auto = true;
-            player.x = width/2;
-            player.y = height/2;
-            autoID = setInterval(auto_collect, auto_time);
-        } else {
-            auto = false;
-            clearInterval(autoID);
-            autoID = null; // optional, but cleaner
-        }
-    }
+
 
 
 
@@ -291,25 +279,6 @@ function circle_spawning() {
     }
 }
 
-let autoTarget = null;
-
-function auto_collect() {
-  // If no circles, do nothing
-  if (circles_group.length === 0) return;
-
-  // If we're currently going to a target, check if we reached it
-  if (autoTarget) {
-    let d = dist(player.x, player.y, autoTarget.x, autoTarget.y);
-    if (d > 5) return; // Still moving toward target — exit early
-  }
-
-  // Choose a new target
-  let i = Math.floor(Math.random() * circles_group.length);
-  autoTarget = circles_group[i];
-
-  // Move toward it
-  player.moveTo(autoTarget.x, autoTarget.y, auto_time);
-}
 
 
 
