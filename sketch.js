@@ -333,60 +333,6 @@ function prestiges() {
         prestige_button.color = '#2874a6'; // Resets Upgrades to Dark Blue
         
     }
-    
-    
-    
-
-    // - All Prestige Upgrades - \\
-    for (let prestige_upgrade of prestige_group) {
-        
-        prestige_upgrade.color = '#1b4f72'; // Resets Upgrades to Dark Blue
-        
-        // - Upgrade Availible - \\
-        if (prestige_upgrades[prestige_upgrade.upgradeType]!=null) {
-            
-            prestige_upgrade.color = '#2874a6'; // Shows which Prestige Upgrade is Unlocked
-            
-            // - Overlaping Upgrade - \\
-            if (player.overlapping(prestige_upgrade)) {
-                
-                // Color Change \\
-                prestige_upgrade.color = color(21, 67, 96, 100); // Making it see through
-                
-                //  Title & Description  \\
-                title = prestige_upgrades[prestige_upgrade.upgradeType][0]; // Title of the upgrade
-                description = prestige_upgrades[prestige_upgrade.upgradeType][1]; // Description of the upgrade
-                
-                //  Cost Display  \\
-                textSize(20);
-                text(prestige_upgrades[prestige_upgrade.upgradeType][2] + '/' + prestige_upgrades[prestige_upgrade.upgradeType][3], prestige_upgrade.x, prestige_upgrade.y+50);
-                if (prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
-                    if (prestige_upgrades[prestige_upgrade.upgradeType][2]) {
-                        text(money_converter(prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5]), prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
-                
-                    } else {
-                        text(money_converter(prestige_upgrades[prestige_upgrade.upgradeType][4]* prestige_upgrades[prestige_upgrade.upgradeType][5]), prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
-                    }
-                } else {
-                    text("Max", prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
-                }
-                
-                //  Rectangle Display  \\
-                fill('#1b4f72'); // Retangles Color
-                //stroke('#154360'); // Retangles Outline
-                rectMode(CENTER); // Centers Rectangle
-                rect((width / 2), 425, 700, 110); // Creates Rectangle
-                
-                //  Title & Description Displayed \\
-                fill('white'); // Text Color
-                textSize(40); // Title Size
-                text(title, (width / 2), 425 - 20); // Title Location
-                textSize(25); // Description Size
-                text(description, (width / 2), 425 + 20); // Description Location
-                
-            }
-        }
-    }
 }
 
 
