@@ -99,7 +99,7 @@ function setup() {
                 prestige_upgrade = new prestige_group.Sprite();
                 prestige_upgrade.x = 325 + i*100;
                 prestige_upgrade.y = 100 + k*100;
-                prestige_upgrade.upgradeType = int(str(k) + str(i));
+                prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
             }
         }
     } catch (error) {
