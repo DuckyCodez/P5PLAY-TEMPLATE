@@ -139,12 +139,12 @@ function circleSpawning() {
 
 function prestige() {
     // - Setup - \\
-    background('#21618c'); // Blue Background
-    let title = ""; // Blank Title
-    let description = ""; // Blank Description
+    background('blue'); // Blue Background
+    //let title = ""; // Blank Title
+    //let description = ""; // Blank Description
     
     // - Text - \\
-    textAlign(LEFT, LEFT);
+    //textAlign(LEFT, LEFT);
     //fill("#B07F4E"); // Changes Color for Text / Objects
     
     //text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
