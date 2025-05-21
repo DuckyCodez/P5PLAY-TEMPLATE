@@ -76,14 +76,11 @@ function draw() {
     clear();
 
     background('white');
-    try {
-        setInterval(saveGame, 5000);
-        player.layer = 1000;
-        player.x = mouseX;
-        player.y = mouseY;
-    } catch {
 
-    }
+    setInterval(saveGame, 5000);
+    player.layer = 1000;
+    player.x = mouseX;
+    player.y = mouseY;
 
     
 
@@ -97,30 +94,28 @@ function draw() {
         if (kb.pressed('t') && mode != 'circle_spawning') {
             mode = 'circle_spawning';
         }
-    } catch {
-
-    }
     
     
     //  -  Looped Functions  -  \\
     
     //  Circle Area  \\
-    try {
-        if (mode == 'circle_spawning') {
-            circleSpawning();
-        }
         
         //   Prestige   \\
         if (mode == 'prestige') {
             prestiges();
         }
         
-        displayUI();
-        textAlign(CENTER, CENTER);
+        
     } catch {
 
     }
 
+    if (mode == 'circle_spawning') {
+        circleSpawning();
+    }
+    
+    displayUI();
+    textAlign(CENTER, CENTER);
     
 }
 
