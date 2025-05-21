@@ -64,7 +64,7 @@ function setup() {
     circlesGroup = new Group();
     circlesGroup.diameter = 100;
     circlesGroup.color = '#FF9696';
-    //circles_group.stroke = 'black';
+    circlesGroup.stroke = '#154360';
     circlesGroup.collider = 'static';
 
     
@@ -72,7 +72,7 @@ function setup() {
     prestige_group = new Group;
     prestige_group.collider = 'static';
     prestige_group.diameter = 75;
-    //prestige_group.stroke = '#154360';
+    prestige_group.stroke = '#154360';
     prestige_group.color = '#ff0000';
     prestige_group.visible = false;
     
@@ -125,8 +125,8 @@ function update() {
     //   Prestige   \\
     if (kb.pressed('p') && mode != 'prestige') {
         //spawner.visible = false;
-        circles_group.visible = false;
-        prestige_group.visible = true;
+        //circles_group.visible = false;
+        //prestige_group.visible = true;
         //prestige_button.visible = true;
         mode = 'prestige';
     }
