@@ -88,12 +88,20 @@ function setup() {
     prestige_button.x = 1150;
     prestige_button.y = height / 2;
     prestige_button.color = '#1b4f72';
-    //prestige_button.stroke = '#154360';
+    prestige_button.stroke = '#154360';
     prestige_button.collider = 'static';
-    //prestige_button.visible = false;
+    prestige_button.visible = false;
     
     
     //  -  All Upgrades  -  \\
+    for (let i = 0; i < 7; i++) {
+        for (let k = 0; k < 3; k++) {
+            prestige_upgrade = new prestige_group.Sprite();
+            prestige_upgrade.x = 325 + i*100;
+            prestige_upgrade.y = 100 + k*100;
+            prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
+        }
+    }
 
 
     // Player
@@ -173,6 +181,27 @@ function prestige() {
     background('blue');
     displayUI();
     textAlign(CENTER, CENTER);
+
+    if (circlesGroup.length <= 65) {
+        strokeWeight(1);
+        let circle = new circlesGroup.Sprite();
+        circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
+        circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
+    }
+    
+        
+    //  -  Upgrades for Circles  -  \\
+    if (upgrade <= Object.keys(circle_upgrade).length-1) {
+        textSize(50);
+        text("Money Needed (For Upgrades): " + circle_upgrade[upgrade][0], (width / 2), 450);
+        
+        if (kb.pressed('u') && round(money) >= circle_upgrade[upgrade][0]) {
+            money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
+            multiplier += circle_upgrade[upgrade][1]; // Gets the 
+            circlesGroup.color = circle_upgrade[upgrade][2];
+            upgrade += 1;
+        }
+    }
 }
 
 function collect(player, circle) {
@@ -187,9 +216,4 @@ function displayUI() {
     textAlign(LEFT);
     text("Money: " + round(money), 20, 50);
     text("Multiplier: " + multiplier, 20, 100);
-    if (errorMessage) {
-        fill('red');
-        textSize(16);
-        text(errorMessage, 20, 150); // Display at the bottom-left corner
-    }
 }
