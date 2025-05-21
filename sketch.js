@@ -6,7 +6,7 @@ world.gravity.y = 0;
 
 
 function saveGame() {
-let data = {
+    let data = {
         money: money,
         moneyGain: moneyGain,
         upgrade: upgrade,
