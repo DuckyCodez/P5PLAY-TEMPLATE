@@ -99,7 +99,7 @@ function draw() {
     
     //   Prestige   \\
     if (mode == 'prestige') {
-        prestiges();
+        prestige();
     }
 
     if (mode == 'circle_spawning') {
