@@ -91,7 +91,7 @@ function setup() {
     prestige_button.color = '#1b4f72';
     prestige_button.stroke = '#154360';
     prestige_button.collider = 'static';
-    prestige_button.visible = true;
+    prestige_button.visible = false;
     
     
     //  -  All Upgrades  -  \\
@@ -188,6 +188,7 @@ function circleSpawning() {
 function prestige() {
     background('blue');
     displayUI();
+    prestige_group.visible = true;
 }
 
 function collect(player, circle) {
