@@ -70,11 +70,6 @@ function setup() {
     player.diameter = 20;
     player.color = 'red';
     player.overlaps(circlesGroup, collect);
-
-    try {
-        stroke('black');
-        strokeWeight(4);
-    }
 }
 
 function draw() {
@@ -85,17 +80,42 @@ function draw() {
     player.x = mouseX;
     player.y = mouseY;
     
+    //   Prestige   \\
+    if (kb.pressed('p') && mode != 'prestige') {
+        mode = 'prestige';
+    }
     
-    circleSpawning();
+    //  Circle Area  \\
+    if (kb.pressed('t') && mode != 'circle_spawning') {
+        mode = 'circle_spawning';
+    }
     
+    
+    //  -  Looped Functions  -  \\
+    
+    //  Circle Area  \\
+    if (mode == 'circle_spawning') {
+        circleSpawning();
+    }
+    
+    //   Prestige   \\
+    if (mode == 'prestige') {
+        prestiges();
+    }
     
     displayUI();
     textAlign(CENTER, CENTER);
+}
 
-
-    if (kb.pressed('h')) {
-        money += 10000:
+function circleSpawning() {
+    if (circlesGroup.length <= 65) {
+        strokeWeight(1);
+        let circle = new circlesGroup.Sprite();
+        circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
+        circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
     }
+    
+        
     //  -  Upgrades for Circles  -  \\
     if (upgrade <= Object.keys(circle_upgrade).length-1) {
         textSize(50);
@@ -110,20 +130,27 @@ function draw() {
     }
 }
 
-function circleSpawning() {
-    if (circlesGroup.length <= 65) {
-        strokeWeight(1);
-        let circle = new circlesGroup.Sprite();
-        circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
-        circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
-        
-    }
+function prestige() {
+    // - Setup - \\
+    background('#21618c'); // Blue Background
+    let title = ""; // Blank Title
+    let description = ""; // Blank Description
+    
+    // - Text - \\
+    textAlign(LEFT, LEFT);
+    fill("#B07F4E"); // Changes Color for Text / Objects
+    
+    text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
+    textAlign(CENTER, CENTER); // Changes Texts Alignment
+    fill("white"); // Changes Color for Text / Objects
+    textSize(25);
+    text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
+    textSize(20);
 }
 
 function collect(player, circle) {
         circle.remove();
         money += moneyGain * multiplier;
-    
 }
 
 function displayUI() {
