@@ -90,7 +90,7 @@ function setup() {
     prestige_button.color = '#1b4f72';
     prestige_button.stroke = '#154360';
     prestige_button.collider = 'static';
-    prestige_button.visible = false;
+    prestige_button.visible = true;
     
     
     //  -  All Upgrades  -  \\
@@ -124,18 +124,18 @@ function draw() {
     //   Prestige   \\
     if (kb.pressed('p') && mode != 'prestige') {
         //spawner.visible = false;
-        circles_group.visible = false;
-        prestige_group.visible = true;
-        prestige_button.visible = true;
+        //circles_group.visible = false;
+        //prestige_group.visible = true;
+        //prestige_button.visible = true;
         mode = 'prestige';
     }
     
     //  Circle Area  \\
     if (kb.pressed('t') && mode != 'circle_spawning') {
         //spawner.visible = true;
-        prestige_button.visible = false;
-        circles_group.visible = true;
-        prestige_group.visible = false;
+        //prestige_button.visible = false;
+        //circles_group.visible = true;
+        //prestige_group.visible = false;
         mode = 'circle_spawning';
     }
 
