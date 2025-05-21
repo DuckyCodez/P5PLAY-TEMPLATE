@@ -82,9 +82,6 @@ function draw() {
     player.x = mouseX;
     player.y = mouseY;
 
-    
-
-    //   Prestige   \\
     try {
         if (kb.pressed('p') && mode != 'prestige') {
             mode = 'prestige';
