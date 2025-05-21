@@ -128,11 +128,7 @@ function draw() {
         mode = 'prestige';
     }
 
-    if (errorMessage) {
-        fill('red');
-        textSize(16);
-        text(errorMessage, 10, height - 20); // Display at the bottom-left corner
-    }
+    
     
     //  Circle Area  \\
     if (kb.pressed('t')) {
@@ -223,4 +219,9 @@ function displayUI() {
     textAlign(LEFT);
     text("Money: " + round(money), 20, 50);
     text("Multiplier: " + multiplier, 20, 100);
+    if (errorMessage) {
+        fill('red');
+        textSize(16);
+        text(errorMessage, 20, 150); // Display at the bottom-left corner
+    }
 }
