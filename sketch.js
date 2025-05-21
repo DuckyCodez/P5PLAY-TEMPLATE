@@ -74,37 +74,54 @@ function setup() {
 
 function draw() {
     clear();
-    background('gray');
-    setInterval(saveGame, 5000);
-    player.layer = 1000;
-    player.x = mouseX;
-    player.y = mouseY;
-    
-    //   Prestige   \\
-    if (kb.pressed('p') && mode != 'prestige') {
-        mode = 'prestige';
+
+    background('white');
+    try {
+        setInterval(saveGame, 5000);
+        player.layer = 1000;
+        player.x = mouseX;
+        player.y = mouseY;
+    } catch {
+
     }
+
     
-    //  Circle Area  \\
-    if (kb.pressed('t') && mode != 'circle_spawning') {
-        mode = 'circle_spawning';
+
+    try {
+        //   Prestige   \\
+        if (kb.pressed('p') && mode != 'prestige') {
+            mode = 'prestige';
+        }
+        
+        //  Circle Area  \\
+        if (kb.pressed('t') && mode != 'circle_spawning') {
+            mode = 'circle_spawning';
+        }
+    } catch {
+
     }
     
     
     //  -  Looped Functions  -  \\
     
     //  Circle Area  \\
-    if (mode == 'circle_spawning') {
-        circleSpawning();
+    try {
+        if (mode == 'circle_spawning') {
+            circleSpawning();
+        }
+        
+        //   Prestige   \\
+        if (mode == 'prestige') {
+            prestiges();
+        }
+        
+        displayUI();
+        textAlign(CENTER, CENTER);
+    } catch {
+
     }
+
     
-    //   Prestige   \\
-    if (mode == 'prestige') {
-        prestiges();
-    }
-    
-    displayUI();
-    textAlign(CENTER, CENTER);
 }
 
 function circleSpawning() {
