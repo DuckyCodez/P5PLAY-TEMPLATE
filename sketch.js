@@ -90,7 +90,7 @@ function setup() {
     prestige_button.color = '#1b4f72';
     //prestige_button.stroke = '#154360';
     prestige_button.collider = 'static';
-    prestige_button.visible = false;
+    //prestige_button.visible = false;
     
     
     //  -  All Upgrades  -  \\
