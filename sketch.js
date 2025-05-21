@@ -84,30 +84,24 @@ function draw() {
 
     
 
-    try {
-        //   Prestige   \\
-        if (kb.pressed('p') && mode != 'prestige') {
-            mode = 'prestige';
-        }
-        
-        //  Circle Area  \\
-        if (kb.pressed('t') && mode != 'circle_spawning') {
-            mode = 'circle_spawning';
-        }
-    
-    
-    //  -  Looped Functions  -  \\
+    //   Prestige   \\
+    if (kb.pressed('p') && mode != 'prestige') {
+        mode = 'prestige';
+    }
     
     //  Circle Area  \\
-        
-        //   Prestige   \\
-        if (mode == 'prestige') {
-            prestiges();
-        }
-        
-        
-    } catch {
+    if (kb.pressed('t') && mode != 'circle_spawning') {
+        mode = 'circle_spawning';
+    }
 
+
+    //  -  Looped Functions  -  \\
+
+    //  Circle Area  \\
+    
+    //   Prestige   \\
+    if (mode == 'prestige') {
+        prestiges();
     }
 
     if (mode == 'circle_spawning') {
