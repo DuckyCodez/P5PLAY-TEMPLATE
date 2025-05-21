@@ -73,7 +73,7 @@ function setup() {
     prestige_group.diameter = 75;
     //prestige_group.stroke = '#154360';
     prestige_group.color = '#ff0000';
-    //prestige_group.visible = false;
+    prestige_group.visible = false;
     
     
     
