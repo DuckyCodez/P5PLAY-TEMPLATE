@@ -54,6 +54,7 @@ let upgrade = 1;
 let moneyNeeded = 400;
 let max_money = 100000;
 let multiplier = 1;
+let mode = 'circle_spawning';
 
 function setup() {
 
@@ -82,17 +83,13 @@ function draw() {
     player.x = mouseX;
     player.y = mouseY;
 
-    try {
-        if (kb.pressed('p') && mode != 'prestige') {
-            mode = 'prestige';
-        }
-        
-        //  Circle Area  \\
-        if (kb.pressed('t') && mode != 'circle_spawning') {
-            mode = 'circle_spawning';
-        }
-    } catch {
-
+    if (kb.pressed('p') && mode != 'prestige') {
+        mode = 'prestige';
+    }
+    
+    //  Circle Area  \\
+    if (kb.pressed('t') && mode != 'circle_spawning') {
+        mode = 'circle_spawning';
     }
 
 
