@@ -102,8 +102,8 @@ function setup() {
                 prestige_upgrade.upgradeType = int(str(k) + str(i));
             }
         }
-    } catch {
-
+    } catch (error) {
+        errorMessage = "Error creating prestige button or upgrades: " + error;
     }
 
 
@@ -127,11 +127,19 @@ function draw() {
     if (kb.pressed('p')) {
         mode = 'prestige';
     }
+
+    if (errorMessage) {
+        fill('red');
+        textSize(16);
+        text(errorMessage, 10, height - 20); // Display at the bottom-left corner
+    }
     
     //  Circle Area  \\
     if (kb.pressed('t')) {
         mode = 'circle_spawning';
     }
+
+
 
 
     //  -  Looped Functions  -  \\
