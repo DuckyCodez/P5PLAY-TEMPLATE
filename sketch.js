@@ -83,12 +83,12 @@ function draw() {
     player.x = mouseX;
     player.y = mouseY;
 
-    if (kb.pressed('p') && mode != 'prestige') {
+    if (kb.pressed('p')) {
         mode = 'prestige';
     }
     
     //  Circle Area  \\
-    if (kb.pressed('t') && mode != 'circle_spawning') {
+    if (kb.pressed('t')) {
         mode = 'circle_spawning';
     }
 
@@ -105,15 +105,13 @@ function draw() {
     if (mode == 'circle_spawning') {
         circleSpawning();
     }
-    
-    displayUI();
-    textAlign(CENTER, CENTER);
-    
 }
 
 function circleSpawning() {
 
     background('gray');
+    displayUI();
+    textAlign(CENTER, CENTER);
 
     if (circlesGroup.length <= 65) {
         strokeWeight(1);
@@ -138,21 +136,30 @@ function circleSpawning() {
 }
 
 function prestige() {
-    // - Setup - \\
-    background('blue'); // Blue Background
-    //let title = ""; // Blank Title
-    //let description = ""; // Blank Description
+    background('blue');
+    displayUI();
+    textAlign(CENTER, CENTER);
+
+    if (circlesGroup.length <= 65) {
+        strokeWeight(1);
+        let circle = new circlesGroup.Sprite();
+        circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
+        circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
+    }
     
-    // - Text - \\
-    //textAlign(LEFT, LEFT);
-    //fill("#B07F4E"); // Changes Color for Text / Objects
-    
-    //text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
-    //textAlign(CENTER, CENTER); // Changes Texts Alignment
-    //fill("white"); // Changes Color for Text / Objects
-    //textSize(25);
-    //text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
-    //textSize(20);
+        
+    //  -  Upgrades for Circles  -  \\
+    if (upgrade <= Object.keys(circle_upgrade).length-1) {
+        textSize(50);
+        text("Money Needed (For Upgrades): " + circle_upgrade[upgrade][0], (width / 2), 450);
+        
+        if (kb.pressed('u') && round(money) >= circle_upgrade[upgrade][0]) {
+            money -= circle_upgrade[upgrade][0]; // Gets the cost and subtracks it from the players money
+            multiplier += circle_upgrade[upgrade][1]; // Gets the 
+            circlesGroup.color = circle_upgrade[upgrade][2];
+            upgrade += 1;
+        }
+    }
 }
 
 function collect(player, circle) {
