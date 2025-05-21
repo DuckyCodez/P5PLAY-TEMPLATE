@@ -85,13 +85,17 @@ function draw() {
     
 
     //   Prestige   \\
-    if (kb.pressed('p') && mode != 'prestige') {
-        mode = 'prestige';
-    }
-    
-    //  Circle Area  \\
-    if (kb.pressed('t') && mode != 'circle_spawning') {
-        mode = 'circle_spawning';
+    try {
+        if (kb.pressed('p') && mode != 'prestige') {
+            mode = 'prestige';
+        }
+        
+        //  Circle Area  \\
+        if (kb.pressed('t') && mode != 'circle_spawning') {
+            mode = 'circle_spawning';
+        }
+    } catch {
+
     }
 
 
