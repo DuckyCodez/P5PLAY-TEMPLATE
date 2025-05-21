@@ -71,7 +71,7 @@ function setup() {
     prestige_group = new Group;
     prestige_group.collider = 'static';
     prestige_group.diameter = 75;
-    prestige_group.stroke = '#154360';
+    //prestige_group.stroke = '#154360';
     prestige_group.color = '#ff0000';
     prestige_group.visible = false;
     
@@ -87,7 +87,7 @@ function setup() {
     prestige_button.x = 1150;
     prestige_button.y = height / 2;
     prestige_button.color = '#1b4f72';
-    prestige_button.stroke = '#154360';
+    //prestige_button.stroke = '#154360';
     prestige_button.collider = 'static';
     prestige_button.visible = false;
     
