@@ -112,6 +112,9 @@ function draw() {
 }
 
 function circleSpawning() {
+
+    background('gray');
+
     if (circlesGroup.length <= 65) {
         strokeWeight(1);
         let circle = new circlesGroup.Sprite();
@@ -142,14 +145,14 @@ function prestige() {
     
     // - Text - \\
     textAlign(LEFT, LEFT);
-    fill("#B07F4E"); // Changes Color for Text / Objects
+    //fill("#B07F4E"); // Changes Color for Text / Objects
     
-    text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
-    textAlign(CENTER, CENTER); // Changes Texts Alignment
-    fill("white"); // Changes Color for Text / Objects
-    textSize(25);
-    text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
-    textSize(20);
+    //text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
+    //textAlign(CENTER, CENTER); // Changes Texts Alignment
+    //fill("white"); // Changes Color for Text / Objects
+    //textSize(25);
+    //text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
+    //textSize(20);
 }
 
 function collect(player, circle) {
