@@ -188,6 +188,7 @@ function prestige() {
     //prestige_button.visible = true;
     background('blue');
     displayUI();
+    circles_group.visible = false;
 }
 
 function collect(player, circle) {
