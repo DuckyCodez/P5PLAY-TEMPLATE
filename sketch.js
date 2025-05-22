@@ -152,9 +152,9 @@ function update() {
 }
 
 function circleSpawning() {
-    prestige_button.visible = false;
-    circles_group.visible = true;
-    prestige_group.visible = false;
+    //prestige_button.visible = false;
+    //circles_group.visible = true;
+    //prestige_group.visible = false;
 
     background('gray');
     displayUI();
@@ -183,9 +183,9 @@ function circleSpawning() {
 }
 
 function prestige() {
-    circles_group.visible = false;
-    prestige_group.visible = true;
-    prestige_button.visible = true;
+    //circles_group.visible = false;
+    //prestige_group.visible = true;
+    //prestige_button.visible = true;
     background('blue');
     displayUI();
 }
