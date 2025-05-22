@@ -125,18 +125,12 @@ function update() {
     //   Prestige   \\
     if (kb.pressed('p') && mode != 'prestige') {
         //spawner.visible = false;
-        //circles_group.visible = false;
-        //prestige_group.visible = true;
-        //prestige_button.visible = true;
         mode = 'prestige';
     }
     
     //  Circle Area  \\
     if (kb.pressed('t') && mode != 'circle_spawning') {
         //spawner.visible = true;
-        //prestige_button.visible = false;
-        //circles_group.visible = true;
-        //prestige_group.visible = false;
         mode = 'circle_spawning';
     }
 
@@ -158,6 +152,9 @@ function update() {
 }
 
 function circleSpawning() {
+    prestige_button.visible = false;
+    circles_group.visible = true;
+    prestige_group.visible = false;
 
     background('gray');
     displayUI();
@@ -186,9 +183,11 @@ function circleSpawning() {
 }
 
 function prestige() {
+    circles_group.visible = false;
+    prestige_group.visible = true;
+    prestige_button.visible = true;
     background('blue');
     displayUI();
-    prestige_group.visible = true;
 }
 
 function collect(player, circle) {
