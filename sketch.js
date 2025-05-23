@@ -2,9 +2,6 @@ new Q5();
 new Canvas();
 world.gravity.y = 0;
 
-
-
-
 function saveGame() {
     let data = {
         money: money,
@@ -72,60 +69,61 @@ var multiplier = 1; // Contains Money Multiplier
 var auto = false;
 var auto_time = 10; // Time for Auto Collect
 
+function setup() {
 
-// Try loading game on start
-loadGame();
-// Groups
-circlesGroup = new Group();
-circlesGroup.diameter = 100;
-circlesGroup.color = '#FF9696';
-circlesGroup.stroke = '#154360';
-circlesGroup.collider = 'static';
+    // Try loading game on start
+    loadGame();
+    // Groups
+    circlesGroup = new Group();
+    circlesGroup.diameter = 100;
+    circlesGroup.color = '#FF9696';
+    circlesGroup.stroke = '#154360';
+    circlesGroup.collider = 'static';
 
-
-//  -  Prestige Group  -  \\
-prestige_group = new Group;
-prestige_group.collider = 'static';
-prestige_group.diameter = 75;
-prestige_group.stroke = '#154360';
-prestige_group.color = '#ff0000';
-prestige_group.visible = false;
-
-
-
-//   -- Sprites --   \\
-
-
-//. -  Button. -  \\
-
-prestige_button = new Sprite();
-prestige_button.height = 250;
-prestige_button.width = 150;
-prestige_button.x = 1150;
-prestige_button.y = height / 2;
-prestige_button.color = '#1b4f72';
-prestige_button.stroke = '#154360';
-prestige_button.collider = 'static';
-prestige_button.visible = false;
-
-
-//  -  All Upgrades  -  \\
-for (let i = 0; i < 7; i++) {
-    for (let k = 0; k < 3; k++) {
-        prestige_upgrade = new prestige_group.Sprite();
-        prestige_upgrade.x = 325 + i*100;
-        prestige_upgrade.y = 100 + k*100;
-        prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
+    
+    //  -  Prestige Group  -  \\
+    prestige_group = new Group;
+    prestige_group.collider = 'static';
+    prestige_group.diameter = 75;
+    prestige_group.stroke = '#154360';
+    prestige_group.color = '#ff0000';
+    prestige_group.visible = false;
+    
+    
+    
+    //   -- Sprites --   \\
+    
+    
+    //. -  Button. -  \\
+    
+    prestige_button = new Sprite();
+    prestige_button.height = 250;
+    prestige_button.width = 150;
+    prestige_button.x = 1150;
+    prestige_button.y = height / 2;
+    prestige_button.color = '#1b4f72';
+    prestige_button.stroke = '#154360';
+    prestige_button.collider = 'static';
+    prestige_button.visible = false;
+    
+    
+    //  -  All Upgrades  -  \\
+    for (let i = 0; i < 7; i++) {
+        for (let k = 0; k < 3; k++) {
+            prestige_upgrade = new prestige_group.Sprite();
+            prestige_upgrade.x = 325 + i*100;
+            prestige_upgrade.y = 100 + k*100;
+            prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
+        }
     }
+
+
+    // Player
+    player = new Sprite();
+    player.diameter = 20;
+    player.color = 'red';
+    player.overlaps(circlesGroup, collect);
 }
-
-
-// Player
-player = new Sprite();
-player.diameter = 20;
-player.color = 'red';
-player.overlaps(circlesGroup, collect);
-
 
 function update() {
     clear();
@@ -199,6 +197,10 @@ function circleSpawning() {
 
 function prestige() {
     background('blue');
+    displayUI();
+    circles_group.visible = false;
+    prestige_button.visible = true;
+    prestige_group.visible = true;
     // - Setup - \\
     let title = ""; // Blank Title
     let description = ""; // Blank Description
@@ -207,18 +209,131 @@ function prestige() {
     textAlign(LEFT, LEFT);
     //strokeWeight(0)
     //rectMode(CORNER)
-    //textAlign(LEFT, LEFT); // Changes Texts Alignment
-    //fill("#B07F4E"); // Changes Color for Text / Objects
-    //textSize(50); // Changes Texts Size
+    textAlign(LEFT, LEFT); // Changes Texts Alignment
+    fill("#B07F4E"); // Changes Color for Text / Objects
+    textSize(50); // Changes Texts Size
     //image(prestigeIMG, 7, (height / 2) - 70, 250, 60)
     
-    text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
-    //textAlign(CENTER, CENTER); // Changes Texts Alignment
-    //fill("white"); // Changes Color for Text / Objects
-    //textSize(25);
+    text(round(prestige['prestige_points']), 83, (height / 2) - (40));
+    textAlign(CENTER, CENTER); // Changes Texts Alignment
+    fill("white"); // Changes Color for Text / Objects
+    textSize(25);
     //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
     text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
     textSize(20);
+
+    //  -  Prestige  -  \\
+    if (player.overlapping(prestige_button)) {
+        
+        if (round(money) >= prestige['min_money']) {
+            text(money * prestige['prestige_rate'],prestige_button.x,prestige_button.y)
+        } else {
+            text('Money Needed:',prestige_button.x,prestige_button.y-30)
+            text('2.5k',prestige_button.x,prestige_button.y)
+        }
+        prestige_button.color = color(21, 67, 96, 100); // Making it see through
+        
+        //  - Prestiged - \\
+        if (player.overlapping(prestige_button) && mouse.pressed() && round(money) >= prestige['min_money']) {
+            prestige['prestige_total'] += money * prestige['prestige_rate'];
+            prestige['prestige_points'] += money * prestige['prestige_rate']; // Gets the cost and subtracks it from the players money
+            money = 0;
+            circles_group.color = 'red';
+            multiplier += 1; // Gets the 
+            upgrade = 1; 
+        }
+
+    } else {
+        
+        prestige_button.color = '#2874a6'; // Resets Upgrades to Dark Blue
+        
+    }
+    
+    
+    
+
+    // - All Prestige Upgrades - \\
+    for (let prestige_upgrade of prestige_group) {
+        
+        prestige_upgrade.color = '#1b4f72'; // Resets Upgrades to Dark Blue
+        
+        // - Upgrade Availible - \\
+        if (prestige_upgrades[prestige_upgrade.upgradeType]!=null) {
+            
+            prestige_upgrade.color = '#2874a6'; // Shows which Prestige Upgrade is Unlocked
+            
+            // - Overlaping Upgrade - \\
+            if (player.overlapping(prestige_upgrade)) {
+                
+                // Color Change \\
+                prestige_upgrade.color = color(21, 67, 96, 100); // Making it see through
+                
+                //  Title & Description  \\
+                title = prestige_upgrades[prestige_upgrade.upgradeType][0]; // Title of the upgrade
+                description = prestige_upgrades[prestige_upgrade.upgradeType][1]; // Description of the upgrade
+                
+                //  Cost Display  \\
+                textSize(20);
+                text(prestige_upgrades[prestige_upgrade.upgradeType][2] + '/' + prestige_upgrades[prestige_upgrade.upgradeType][3], prestige_upgrade.x, prestige_upgrade.y+50);
+                if (prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
+                    if (prestige_upgrades[prestige_upgrade.upgradeType][2]) {
+                        text(prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5], prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
+                
+                    } else {
+                        text(prestige_upgrades[prestige_upgrade.upgradeType][4]* prestige_upgrades[prestige_upgrade.upgradeType][5], prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
+                    }
+                } else {
+                    text("Max", prestige_upgrade.x, prestige_upgrade.y); // Change to how much the upgrade costs
+                }
+                
+                //  Rectangle Display  \\
+                fill('#1b4f72'); // Retangles Color
+                stroke('#154360'); // Retangles Outline
+                rectMode(CENTER); // Centers Rectangle
+                rect((width / 2), 425, 700, 110); // Creates Rectangle
+                
+                //  Title & Description Displayed \\
+                fill('white'); // Text Color
+                textSize(40); // Title Size
+                text(title, (width / 2), 425 - 20); // Title Location
+                textSize(25); // Description Size
+                text(description, (width / 2), 425 + 20); // Description Location
+                
+                
+                // - Mouse Pressed - \\
+                if (mouseIsPressed) {
+                    
+                    //
+                    if (prestige_upgrades[prestige_upgrade.upgradeType][2] != 0 && prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5] <= prestige['prestige_points'] && prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
+                        
+                        //  Prestige Loss \\
+                        prestige['prestige_points'] -= prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][2] * prestige_upgrades[prestige_upgrade.upgradeType][5]
+                        
+                        //   Money Gained   \\
+                        if ([10].includes(prestige_upgrade.upgradeType)) {
+                            prestige['prestige_rate'] += prestige_upgrades[prestige_upgrade.upgradeType][6];
+                        } else if ([20,21,22].includes(prestige_upgrade.upgradeType)) {
+                            auto_time += prestige_upgrades[prestige_upgrade.upgradeType][6];
+                        }
+                        
+                        //  Changes What Upgrade its On
+                        prestige_upgrades[prestige_upgrade.upgradeType][2] += 1;
+                        
+                    } else if (prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][5] <= prestige['prestige_points'] && prestige_upgrades[prestige_upgrade.upgradeType][2] < prestige_upgrades[prestige_upgrade.upgradeType][3]) {
+                        prestige['prestige_points'] -= prestige_upgrades[prestige_upgrade.upgradeType][4] * prestige_upgrades[prestige_upgrade.upgradeType][5]
+                                                //   Money Gained   \\
+                        
+                        if ([10].includes(prestige_upgrade.upgradeType)) {
+                            prestige['prestige_rate'] += prestige_upgrades[prestige_upgrade.upgradeType][6];
+                        } else if ([20,21,22].includes(prestige_upgrade.upgradeType)) {
+                            auto_time -= prestige_upgrades[prestige_upgrade.upgradeType][6];
+                        }
+                        prestige_upgrades[prestige_upgrade.upgradeType][2] += 1;
+                    }
+                }
+            }
+        }
+    }
 }
 
 function collect(player, circle) {
