@@ -205,8 +205,8 @@ function prestige() {
     prestige_button.visible = true;
     prestige_group.visible = true;
     // - Setup - \\
-    let title = ""; // Blank Title
-    let description = ""; // Blank Description
+    //let title = ""; // Blank Title
+    //let description = ""; // Blank Description
     
     // - Text - \\
     textAlign(LEFT, LEFT);
@@ -219,7 +219,7 @@ function prestige() {
     
     text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
     textAlign(CENTER, CENTER); // Changes Texts Alignment
-    fill("white"); // Changes Color for Text / Objects
+    //fill("white"); // Changes Color for Text / Objects
     textSize(25);
     //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
     text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
