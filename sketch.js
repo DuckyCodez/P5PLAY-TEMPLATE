@@ -168,14 +168,13 @@ function update() {
 }
 
 function circleSpawning() {
-    
+    //prestige_button.visible = false;
+    //circles_group.visible = true;
+    //prestige_group.visible = false;
 
     background('gray');
     displayUI();
     textAlign(CENTER, CENTER);
-    prestige_button.visible = false;
-    circles_group.visible = true;
-    prestige_group.visible = false;
 
     if (circlesGroup.length <= 65) {
         strokeWeight(1);
@@ -206,16 +205,16 @@ function prestige() {
     prestige_button.visible = true;
     prestige_group.visible = true;
     // - Setup - \\
-    var title = ""; // Blank Title
-    var description = ""; // Blank Description
+    let title = ""; // Blank Title
+    let description = ""; // Blank Description
     
     // - Text - \\
-    //textAlign(LEFT, LEFT);
+    textAlign(LEFT, LEFT);
     //strokeWeight(0)
     //rectMode(CORNER)
-    //textAlign(LEFT, LEFT); // Changes Texts Alignment
-    //fill("#B07F4E"); // Changes Color for Text / Objects
-    //textSize(50); // Changes Texts Size
+    textAlign(LEFT, LEFT); // Changes Texts Alignment
+    fill("#B07F4E"); // Changes Color for Text / Objects
+    textSize(50); // Changes Texts Size
     //image(prestigeIMG, 7, (height / 2) - 70, 250, 60)
     
     text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
@@ -225,7 +224,7 @@ function prestige() {
     //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
     text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
     textSize(20);
-    
+
     //  -  Prestige  -  \\
     if (player.overlapping(prestige_button)) {
         
@@ -255,8 +254,8 @@ function prestige() {
 }
 
 function collect(player, circle) {
-    circle.remove();
-    money += moneyGain * multiplier;
+        circle.remove();
+        money += moneyGain * multiplier;
 }
 
 function displayUI() {
