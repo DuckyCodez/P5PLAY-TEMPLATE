@@ -28,9 +28,23 @@ function loadGame() {
     }
 }
 
+//  -  Prestige  -  \\
+// In Order: Title, Desc, Upgrade Type (Not Here), Starting, Ending, Price Multiplication, Upgrade Type Gained
+var prestige_upgrades = {
+    
+    // Prestige Rate \\
+    10 : ["Prestige Rate V1", "1% More Prestige Evertime it is Bought", 0, 10, 400, 2.25, 0.01],
+    11 : ["Prestige Rate V2", "5% More Prestige Evertime it is Bought", 0, 5, 800, 3, 0.05],
+    
+    // Auto Collect \\
+    20 : ["Auto Collect Time V1", "Lowers time of auto collection", 0, 10, 600, 2.25, 5],
+    21 : ["Auto Collect Time V2", "Buff to the time of auto collection", 0, 5, 2400, 2.5, 10],
+    22 : ["Auto Collect Time V3", "Masive Buff to the time of auto collection", 0, 2, 3200, 3, 25],
 
+}
 
-let circle_upgrade = {
+//  -  Circle Upgrades  -  \\
+var circle_upgrade = {
     // Red Upgrades \\
     1:[800 , 0.5 , '#ff4343'], 2:[1400 , 0.25 , '#ff7373'], 3:[2000 , 0.25 , '#ff9b9b'],
     
@@ -46,15 +60,17 @@ let circle_upgrade = {
     // Blue Upgrades \\
 }
 
-let spawner, circlesGroup, player;
 
-let moneyGain = 1;
-let money = 0;
-let upgrade = 1;
-let moneyNeeded = 400;
-let max_money = 100000;
-let multiplier = 1;
-let mode = 'circle_spawning';
+
+var prestige = {"prestige_points" : 0,"prestige_total" : 0, "prestige_rate" : 0.3, "min_money" : 2500} // First is Points, The Second is the Conversion rate
+var moneyGain = 1; // Money Gain Per
+var money = 0; // Total Money
+var upgrade = 1; // Current Upgrade
+var mode = 'circle_spawning'; // Which Area the Player Spawns
+var max_money = 750000; // Max Cash
+var multiplier = 1; // Contains Money Multiplier
+var auto = false;
+var auto_time = 10; // Time for Auto Collect
 
 function setup() {
 
@@ -183,12 +199,11 @@ function circleSpawning() {
 }
 
 function prestige() {
-    //circles_group.visible = false;
-    //prestige_group.visible = true;
-    //prestige_button.visible = true;
     background('blue');
     displayUI();
     circles_group.visible = false;
+    prestige_button.visible = true;
+    prestige_group.visible = true;
 }
 
 function collect(player, circle) {
