@@ -178,7 +178,7 @@ function circleSpawning() {
     prestige_group.visible = false;
 
     if (circlesGroup.length <= 65) {
-        strokeWeight(1);
+        //strokeWeight(1);
         let circle = new circlesGroup.Sprite();
         circle.x = random((width / 2) - (width / 4), (width / 2) + (width / 4));
         circle.y = random((height / 2) - (height / 4), (height / 2) + (height / 4));
@@ -206,8 +206,8 @@ function prestige() {
     prestige_button.visible = true;
     prestige_group.visible = true;
     // - Setup - \\
-    var title = ""; // Blank Title
-    var description = ""; // Blank Description
+    //var title = ""; // Blank Title
+    //var description = ""; // Blank Description
     
     // - Text - \\
     //textAlign(LEFT, LEFT);
