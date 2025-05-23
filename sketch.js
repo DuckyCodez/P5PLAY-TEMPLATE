@@ -196,57 +196,58 @@ function circleSpawning() {
 }
 
 function prestige() {
-    background('blue');
-    displayUI();
-    circles_group.visible = false;
-    prestige_button.visible = true;
-    prestige_group.visible = true;
-    // - Setup - \\
-    let title = ""; // Blank Title
-    let description = ""; // Blank Description
-    
-    // - Text - \\
-    textAlign(LEFT, LEFT);
-    //strokeWeight(0)
-    //rectMode(CORNER)
-    textAlign(LEFT, LEFT); // Changes Texts Alignment
-    fill("#B07F4E"); // Changes Color for Text / Objects
-    textSize(50); // Changes Texts Size
-    //image(prestigeIMG, 7, (height / 2) - 70, 250, 60)
-    
-    text(round(prestige['prestige_points']), 83, (height / 2) - (40));
-    textAlign(CENTER, CENTER); // Changes Texts Alignment
-    fill("white"); // Changes Color for Text / Objects
-    textSize(25);
-    //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
-    text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
-    textSize(20);
-
-    //  -  Prestige  -  \\
-    if (player.overlapping(prestige_button)) {
+    try {
+        background('blue');
+        displayUI();
+        // - Setup - \\
+        let title = ""; // Blank Title
+        let description = ""; // Blank Description
         
-        if (round(money) >= prestige['min_money']) {
-            text(money * prestige['prestige_rate'],prestige_button.x,prestige_button.y)
+        // - Text - \\
+        textAlign(LEFT, LEFT);
+        //strokeWeight(0)
+        //rectMode(CORNER)
+        textAlign(LEFT, LEFT); // Changes Texts Alignment
+        fill("#B07F4E"); // Changes Color for Text / Objects
+        textSize(50); // Changes Texts Size
+        //image(prestigeIMG, 7, (height / 2) - 70, 250, 60)
+        
+        text(round(prestige['prestige_points']), 83, (height / 2) - (40));
+        textAlign(CENTER, CENTER); // Changes Texts Alignment
+        fill("white"); // Changes Color for Text / Objects
+        textSize(25);
+        //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
+        text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
+        textSize(20);
+
+        //  -  Prestige  -  \\
+        if (player.overlapping(prestige_button)) {
+            
+            if (round(money) >= prestige['min_money']) {
+                text(money * prestige['prestige_rate'],prestige_button.x,prestige_button.y)
+            } else {
+                text('Money Needed:',prestige_button.x,prestige_button.y-30)
+                text('2.5k',prestige_button.x,prestige_button.y)
+            }
+            prestige_button.color = color(21, 67, 96, 100); // Making it see through
+            
+            //  - Prestiged - \\
+            if (player.overlapping(prestige_button) && mouse.pressed() && round(money) >= prestige['min_money']) {
+                prestige['prestige_total'] += money * prestige['prestige_rate'];
+                prestige['prestige_points'] += money * prestige['prestige_rate']; // Gets the cost and subtracks it from the players money
+                money = 0;
+                circles_group.color = 'red';
+                multiplier += 1; // Gets the 
+                upgrade = 1; 
+            }
+
         } else {
-            text('Money Needed:',prestige_button.x,prestige_button.y-30)
-            text('2.5k',prestige_button.x,prestige_button.y)
+            
+            prestige_button.color = '#2874a6'; // Resets Upgrades to Dark Blue
+            
         }
-        prestige_button.color = color(21, 67, 96, 100); // Making it see through
-        
-        //  - Prestiged - \\
-        if (player.overlapping(prestige_button) && mouse.pressed() && round(money) >= prestige['min_money']) {
-            prestige['prestige_total'] += money * prestige['prestige_rate'];
-            prestige['prestige_points'] += money * prestige['prestige_rate']; // Gets the cost and subtracks it from the players money
-            money = 0;
-            circles_group.color = 'red';
-            multiplier += 1; // Gets the 
-            upgrade = 1; 
-        }
-
-    } else {
-        
-        prestige_button.color = '#2874a6'; // Resets Upgrades to Dark Blue
-        
+    } catch (e) {
+        text('Error: ' + e, 500, 500);
     }
 }
 
