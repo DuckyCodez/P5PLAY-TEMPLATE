@@ -159,7 +159,13 @@ function update() {
     
     //   Prestige   \\
     if (mode == 'prestige') {
-        prestige();
+        try {
+            prestige();
+        } catch {
+            console.log('Error: Prestige Function');
+        }
+        background('blue');
+        
     }
 
     if (mode == 'circle_spawning') {
