@@ -72,61 +72,60 @@ var multiplier = 1; // Contains Money Multiplier
 var auto = false;
 var auto_time = 10; // Time for Auto Collect
 
-function setup() {
 
-    // Try loading game on start
-    loadGame();
-    // Groups
-    circlesGroup = new Group();
-    circlesGroup.diameter = 100;
-    circlesGroup.color = '#FF9696';
-    circlesGroup.stroke = '#154360';
-    circlesGroup.collider = 'static';
+// Try loading game on start
+loadGame();
+// Groups
+circlesGroup = new Group();
+circlesGroup.diameter = 100;
+circlesGroup.color = '#FF9696';
+circlesGroup.stroke = '#154360';
+circlesGroup.collider = 'static';
 
-    
-    //  -  Prestige Group  -  \\
-    prestige_group = new Group;
-    prestige_group.collider = 'static';
-    prestige_group.diameter = 75;
-    prestige_group.stroke = '#154360';
-    prestige_group.color = '#ff0000';
-    prestige_group.visible = false;
-    
-    
-    
-    //   -- Sprites --   \\
-    
-    
-    //. -  Button. -  \\
-    
-    prestige_button = new Sprite();
-    prestige_button.height = 250;
-    prestige_button.width = 150;
-    prestige_button.x = 1150;
-    prestige_button.y = height / 2;
-    prestige_button.color = '#1b4f72';
-    prestige_button.stroke = '#154360';
-    prestige_button.collider = 'static';
-    prestige_button.visible = false;
-    
-    
-    //  -  All Upgrades  -  \\
-    for (let i = 0; i < 7; i++) {
-        for (let k = 0; k < 3; k++) {
-            prestige_upgrade = new prestige_group.Sprite();
-            prestige_upgrade.x = 325 + i*100;
-            prestige_upgrade.y = 100 + k*100;
-            prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
-        }
+
+//  -  Prestige Group  -  \\
+prestige_group = new Group;
+prestige_group.collider = 'static';
+prestige_group.diameter = 75;
+prestige_group.stroke = '#154360';
+prestige_group.color = '#ff0000';
+prestige_group.visible = false;
+
+
+
+//   -- Sprites --   \\
+
+
+//. -  Button. -  \\
+
+prestige_button = new Sprite();
+prestige_button.height = 250;
+prestige_button.width = 150;
+prestige_button.x = 1150;
+prestige_button.y = height / 2;
+prestige_button.color = '#1b4f72';
+prestige_button.stroke = '#154360';
+prestige_button.collider = 'static';
+prestige_button.visible = false;
+
+
+//  -  All Upgrades  -  \\
+for (let i = 0; i < 7; i++) {
+    for (let k = 0; k < 3; k++) {
+        prestige_upgrade = new prestige_group.Sprite();
+        prestige_upgrade.x = 325 + i*100;
+        prestige_upgrade.y = 100 + k*100;
+        prestige_upgrade.upgradeType = parseInt(String(k) + String(i), 10)
     }
-
-
-    // Player
-    player = new Sprite();
-    player.diameter = 20;
-    player.color = 'red';
-    player.overlaps(circlesGroup, collect);
 }
+
+
+// Player
+player = new Sprite();
+player.diameter = 20;
+player.color = 'red';
+player.overlaps(circlesGroup, collect);
+
 
 function update() {
     clear();
@@ -208,15 +207,15 @@ function prestige() {
     textAlign(LEFT, LEFT);
     //strokeWeight(0)
     //rectMode(CORNER)
-    textAlign(LEFT, LEFT); // Changes Texts Alignment
-    fill("#B07F4E"); // Changes Color for Text / Objects
-    textSize(50); // Changes Texts Size
+    //textAlign(LEFT, LEFT); // Changes Texts Alignment
+    //fill("#B07F4E"); // Changes Color for Text / Objects
+    //textSize(50); // Changes Texts Size
     //image(prestigeIMG, 7, (height / 2) - 70, 250, 60)
     
     text(money_converter(round(prestige['prestige_points'])), 83, (height / 2) - (40));
-    textAlign(CENTER, CENTER); // Changes Texts Alignment
-    fill("white"); // Changes Color for Text / Objects
-    textSize(25);
+    //textAlign(CENTER, CENTER); // Changes Texts Alignment
+    //fill("white"); // Changes Color for Text / Objects
+    //textSize(25);
     //image(img_prestige_button, (width - 175) , (height / 2) - 150, 150,300)
     text('Prestige:',prestige_button.x,prestige_button.y-prestige_button.w)
     textSize(20);
