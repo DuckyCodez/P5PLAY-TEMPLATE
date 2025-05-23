@@ -161,8 +161,10 @@ function update() {
     if (mode == 'prestige') {
         try {
             prestige();
-        } catch {
-            console.log('Error: Prestige Function');
+        } catch (error) {
+            console.log(error);
+            text('Error: ' + error, width / 2, height / 2);
+            console.log('Prestige Error');
         }
         background('blue');
         
